@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+#tRecordCount {
+		color: red;
+		font-size: 36px;
+		font-weight: bold;
+	}
+
+/*重写分页标签的样式*/
+.pagination > li > a, .pagination > li > span {
+	color: #508b50;
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+	color: #508b50;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+	border-color: #508b50;
+	background: #508b50;
+}
+
+.content {
+	word-wrap:break-word;
+}

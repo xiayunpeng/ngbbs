@@ -1,0 +1,81 @@
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<!-- 评论标题头开始 -->
+				<h3 class="page-header">
+					最新评论<span id="tRecordCount">{{pager.recordCount}}</span>条
+					<a href="#/InsertMsg" class="btn btn-success pull-right">我想说几句</a>
+				</h3>
+				<!-- 评论标题头结束 -->
+				<!-- 评论内容列表开始 -->
+				<div id="msg-wrapper">
+					<div class="panel panel-success" ng-repeat="item in data">
+						 <div class="panel-heading">
+			                发表的用户：<span class="username">{{item.username}}</span>
+			                所在的地区：{{item.ip}}
+			            </div>
+			            <div class="panel-body content">
+			            	<!-- 利用ng-bind-html配合自定义过滤器转义用户输入的带格式数据 -->
+			                <span ng-bind-html="item.content | repSpace"></span>
+			            </div>
+			            <div class="panel-footer text-right">
+			                <span class="pull-left">发表于：{{item.createtime}}</span>
+			                <a href="javascript:;" class="btn btn-success btn-xs hit-btn" ng-click="updateHit($index,item.id);">
+			                	顶 <span class="badge">{{item.hit}}</span>
+			                </a>
+			                <a href="javascript:;" class="btn btn-info btn-xs update-btn" data-loading-text="修改中..." ng-click="getMsg($index,item.id);">
+			                	修改
+			                </a>
+			                <a href="javascript:;" class="btn btn-danger btn-xs del-btn" data-loading-text="删除中..." ng-click="deleteMsg($index,item.id,$event);">
+			                	删除
+			                </a>
+			                <a ui-sref="UpdateMsg({id:item.id,pageNum:pager.pageNum})" class="btn btn-warning btn-xs update-btn">
+			                	修改2
+			                </a>
+			            </div> 
+					</div>
+				</div>
+				<!-- 评论内容列表结束 -->
+				<!-- 分页工具条开始 -->
+				<input type="button" id="loadMsgBtn" class="btn btn-success btn-block" value="加载更多评论" ng-click="queryByPage(pager.pageNum+1)" ng-disabled="pager.pageNum>=pager.pageCount">
+				<!-- 分页工具条结束 -->
+			</div>
+			<div class="col-md-4">
+				
+			</div>
+		</div>
+	</div>
+
+	<!-- 修改评论模态层开始  -->
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4>修改评论内容</h4>
+				</div>
+				<div class="modal-body">
+					<form id="form1" class="form-horizontal">
+						<div class="form-group">
+							<label for="" class="col-sm-2">用户名称</label>
+							<div class="col-sm-8">
+								<input type="text" name="username" id="username" placeholder="请输入用户名称" class="form-control" ng-model="modal.username">
+							</div>				
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-2">评论内容</label>
+							<div class="col-sm-8">
+								<textarea name="content" id="content" cols="30" rows="10" placeholder="请输入评论内容，注意发言文明" class="form-control" ng-model="modal.content"></textarea>
+							</div>				
+						</div>	
+						<input type="hidden" name="id" id="id" ng-model="modal.id">					
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="updateBtn" data-loading-text="修改中..." ng-click="updateMsg($event);">修改</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>		
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 修改评论模态层结束 -->

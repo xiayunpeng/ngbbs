@@ -1,0 +1,6 @@
+bbs评论系统：
+后台基于mysql数据，数据库文件：bbs数据库.sql，需要用sqlyog工具导入，会自动生成数据库和数据表
+后台编程语言是java，需要配置tomcat服务器运行，通过eclipse导入工程
+连接数据库的核心java类是 com.icss.bbs.common.DbUtil.java，可以在此修改数据库里连接参数
+附加了登录验证功能
+前端使用angularjs+jquery实现

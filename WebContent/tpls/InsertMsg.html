@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h3 class="page-header">
+				发表评论
+			</h3>
+			<form id="form1" class="form-horizontal">
+				<div class="form-group">
+					<label for="" class="col-sm-2">用户名称</label>
+					<div class="col-sm-8">
+						<input type="text" ng-model="data.username" name="username" id="username" placeholder="请输入用户名称" class="form-control">
+					</div>				
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2">评论内容</label>
+					<div class="col-sm-8">
+						<textarea ng-model="data.content" name="content" id="content" cols="30" rows="10" placeholder="请输入评论内容，注意发言文明" class="form-control"></textarea>
+					</div>				
+				</div>
+				<div class="form-group">						
+					<div class="col-sm-8 col-sm-offset-2">
+						<input id="addBtn" type="button" value="发表评论" class="btn btn-success" data-loading-text="发表评论中..." data-complete-text="发表成功" ng-click="insertMsg();">
+						<a ui-sref="QueryMsg" class="btn btn-info">查看评论</a>
+					</div>				
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

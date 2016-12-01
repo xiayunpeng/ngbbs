@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<h3 class="page-header">
+				用户登录
+			</h3>
+			<form name="myForm" class="form-horizontal" ng-submit="login();">
+				<div class="form-group" ng-class="{'has-error':myForm.username.$dirty && myForm.username.$invalid}">
+					<label for="" class="col-sm-3 control-label">用户名称</label>
+					<div class="col-sm-9">
+						<input type="text" name="username" id="username" placeholder="请输入用户名称" class="form-control" ng-model="username" required>
+						<p class="help-block" ng-show="myForm.username.$dirty && myForm.username.$error.required">
+							用户名不能为空
+						</p>
+					</div>				
+				</div>
+				<div class="form-group" ng-class="{'has-error':myForm.userpwd.$dirty && myForm.userpwd.$invalid}">
+					<label for="" class="col-sm-3 control-label">密码</label>
+					<div class="col-sm-9">
+						<input type="password" name="userpwd" id="userpwd" placeholder="请输入密码" class="form-control" ng-model="userpwd" required>
+						<p class="help-block" ng-show="myForm.userpwd.$dirty && myForm.userpwd.$error.required">
+							密码不能为空
+						</p>
+					</div>				
+				</div>					
+				<div class="form-group">						
+					<div class="col-sm-12">
+						<input id="loginBtn" type="submit" value="登录系统" class="btn btn-primary btn-block" ng-disabled="myForm.$invalid || myForm.$pristine">
+					</div>				
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
